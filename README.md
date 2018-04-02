@@ -30,8 +30,27 @@ docker build -t nmatsui/swagger2html .
 In the directory of swagger file, run this image with mounting current directory and with swagger filename as a command argument:
 
 ```bash
-docker run --volume $(pwd):/mnt nmatsui/swagger2html swagger_filename.yaml
+docker run --rm --volume $(pwd):/mnt nmatsui/swagger2html swagger_filename.yaml
 ```
+
+### the properties of swagger2markup
+
+Default properties of swagger2markup are below:
+
+```properties
+swagger2markup.generatedExamplesEnabled=true
+swagger2markup.tagOrderBy=AS_IS
+swagger2markup.operationOrderBy=AS_IS
+swagger2markup.definitionOrderBy=AS_IS
+swagger2markup.parameterOrderBy=AS_IS
+swagger2markup.propertyOrderBy=AS_IS
+swagger2markup.responseOrderBy=AS_IS
+```
+
+If you put a `swagger2markup.properties` file at the same directory of target yaml file, you can customize the properties of swagger2markup.
+
+Show below to understand the properties of swagger2markup:
+[Swagger2Markup API Usage](https://github.com/Swagger2Markup/swagger2markup/blob/master/src/docs/asciidoc/usage_guide.adoc)
 
 ## License
 
@@ -39,4 +58,3 @@ docker run --volume $(pwd):/mnt nmatsui/swagger2html swagger_filename.yaml
 
 ## Copyright
 Copyright (c) 2018 Nobuyuki Matsui <nobuyuki.matsui@gmail.com>
-
