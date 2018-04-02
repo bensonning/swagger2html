@@ -33,7 +33,7 @@ In the directory of swagger file, run this image with mounting current directory
 docker run --rm --volume $(pwd):/mnt nmatsui/swagger2html swagger_filename.yaml
 ```
 
-### the properties of swagger2markup
+### properties of swagger2markup
 
 Default properties of swagger2markup are below:
 
