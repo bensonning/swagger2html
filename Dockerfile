@@ -14,6 +14,13 @@ RUN apk update && apk upgrade && \
     gem install -N asciidoctor
 
 WORKDIR /opt
+RUN echo $'swagger2markup.generatedExamplesEnabled=true\n\
+swagger2markup.tagOrderBy=AS_IS\n\
+swagger2markup.operationOrderBy=AS_IS\n\
+swagger2markup.definitionOrderBy=AS_IS\n\
+swagger2markup.parameterOrderBy=AS_IS\n\
+swagger2markup.propertyOrderBy=AS_IS\n\
+swagger2markup.responseOrderBy=AS_IS' > /opt/swagger2markup.properties
 RUN echo $'#!/bin/sh \n\
 if [ $# -ne 1 ]; then\n\
   echo "usage: docker run --volume \$(pwd):/mnt nmatsui/swagger2html swagger_filename.yaml"\n\
@@ -25,7 +32,12 @@ if [ ! -e /mnt/${YAML_FILE} ]; then\n\
   echo "${YAML_FILE} not found"\n\
   exit 1\n\
 fi\n\
-java -jar /usr/local/lib/swagger2markup-cli.jar convert -i /mnt/${YAML_FILE} -f /mnt/${BASE_NAME}\n\
+PROPERTIES="/opt/swagger2markup.properties"\n\
+if [ -e /mnt/swagger2markup.properties ]; then\n\
+  echo "use custom properties"\n\
+  PROPERTIES="/mnt/swagger2markup.properties"\n\
+fi\n\
+java -jar /usr/local/lib/swagger2markup-cli.jar convert -c ${PROPERTIES} -i /mnt/${YAML_FILE} -f /mnt/${BASE_NAME}\n\
 asciidoctor -a toc=left /mnt/${BASE_NAME}.adoc\n\
 exit 0' > /opt/entrypoint.sh && chmod 755 /opt/entrypoint.sh
 
