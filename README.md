@@ -45,12 +45,23 @@ swagger2markup.definitionOrderBy=AS_IS
 swagger2markup.parameterOrderBy=AS_IS
 swagger2markup.propertyOrderBy=AS_IS
 swagger2markup.responseOrderBy=AS_IS
+swagger2markup.pathsGroupedBy=TAGS
 ```
 
 If you put a `swagger2markup.properties` file at the same directory of target yaml file, you can customize the properties of swagger2markup.
 
 Show below to understand the properties of swagger2markup:
 [Swagger2Markup API Usage](https://github.com/Swagger2Markup/swagger2markup/blob/master/src/docs/asciidoc/usage_guide.adoc)
+
+### arguments of asciidoctor
+
+The arguments of asciidoctor are below:
+
+```bash
+asciidoctor -a toc=left -a toclevels=3 <<swagger2markup_converted_file.adoc>>
+```
+
+The 'Table of Contents (depth 3)' is placed on the left side of page.
 
 ## License
 
