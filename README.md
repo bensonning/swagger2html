@@ -2,6 +2,8 @@
 
 This Dockerfile create a [Docker](http://docker.com) image to convert swagger yaml to html.
 
+[![DockerHub Status](https://dockerbuildbadges.quelltext.eu/status.svg?organization=nmatsui&repository=swagger2html)](https://hub.docker.com/r/nmatsui/swagger2html/builds/)
+
 ## Description
 
 The docker container which is run from this image convert the swagger 2.0 yaml file to html file using below:
