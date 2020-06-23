@@ -39,7 +39,7 @@ if [ -e /mnt/swagger2markup.properties ]; then\n\
   PROPERTIES="/mnt/swagger2markup.properties"\n\
 fi\n\
 java -jar /usr/local/lib/swagger2markup-cli.jar convert -c ${PROPERTIES} -i /mnt/${YAML_FILE} -f /mnt/${BASE_NAME}\n\
-asciidoctor -a toc=left -a toclevels=3 /mnt/${BASE_NAME}.adoc\n\
+asciidoctor -a toc=left -a toclevels=3  -a numbered= /mnt/${BASE_NAME}.adoc\n\
 exit 0' > /opt/entrypoint.sh && chmod 755 /opt/entrypoint.sh
 
 ENTRYPOINT ["/opt/entrypoint.sh"]
