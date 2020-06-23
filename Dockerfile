@@ -1,17 +1,7 @@
-FROM alpine:3.7
+FROM nmatsui/swagger2html
 MAINTAINER Nobuyuki Matsui <nobuyuki.matsui@gmail.com>
 
-RUN apk update && apk upgrade && \
-    apk --no-cache add bash git openjdk8 ruby && \
-    git clone https://github.com/Swagger2Markup/swagger2markup-cli.git /opt/swagger2markup-cli && \
-    cd /opt/swagger2markup-cli && \
-    ./gradlew jar && \
-    mv /opt/swagger2markup-cli/build/libs/swagger2markup-*.jar /usr/local/lib/swagger2markup-cli.jar && \
-    ./gradlew clean && \
-    cd / && \
-    rm -rf /root/.gradle && \
-    rm -rf /opt/swagger2markup-cli && \
-    gem install -N asciidoctor
+ 
 
 WORKDIR /opt
 RUN echo $'swagger2markup.generatedExamplesEnabled=true\n\
