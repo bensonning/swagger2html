@@ -1,3 +1,7 @@
+#修改支持中文 
+* 将themy.yml 拷贝到当前目录
+* 将yh.ttf  拷贝到 font/
+
 # swagger2html
 
 This Dockerfile create a [Docker](http://docker.com) image to convert swagger yaml to html.
